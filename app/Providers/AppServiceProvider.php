@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Services\CustomHashManager;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Connection;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,9 +14,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('hash', function ($app) {
-            return new CustomHashManager($app);
+        
+        Connection::resolverFor('pgsql', function ($connection, $database, $prefix, $config) {
+            return new \App\Support\PostgresConnection($connection, $database, $prefix, $config);
         });
+
+        // permite configurar y redirigir todo el trafico a https
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 
     /**

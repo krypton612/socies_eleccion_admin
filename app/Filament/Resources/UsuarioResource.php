@@ -10,20 +10,49 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class UsuarioResource extends Resource
 {
     protected static ?string $model = Usuario::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Usuarios';
+
+    protected static ?string $pluralNavigationLabel = 'Usuarios';
+
+    protected static ?string $navigationGroup = 'Control';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nombre')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('apellido_paterno')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('apellido_materno')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('cedula_identidad')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('contrasena_hash')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('correo')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('fecha_nacimiento')
+                    ->required(),
+                Forms\Components\Select::make('rol_id')
+                    ->relationship('rol', 'tipo_rol')
+                    ->preload()
+                    ->required(),
+                Forms\Components\Toggle::make('is_deleted')
+                    ->required(),
             ]);
     }
 
@@ -32,30 +61,34 @@ class UsuarioResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nombre_completo')
-                ->badge()
-                ->searchable(),
+                    ->badge()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('correo')
-                ->searchable(),
+                    ->copyable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cedula_identidad')
+                    ->copyable()
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('is_deleted')
-                ->label('Eliminado')
-                ->alignCenter()
-                ->boolean()
-                ->searchable(),
+                    ->label('Eliminado')
+                    ->alignCenter()
+                    ->boolean()
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('estado')
-                ->label('¿Puede votar?')
-                ->alignCenter()
-                ->boolean()
-                ->searchable(),
+                    ->label('¿Puede votar?')
+                    ->alignCenter()
+                    ->boolean()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('fecha_nacimiento')
-                ->searchable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('rol.tipo_rol')
-                ->searchable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->toggleable(isToggledHiddenByDefault: true)
-                ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('updated_at')
-                ->toggleable(isToggledHiddenByDefault: true)
-                ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
             ])
             ->filters([
                 //

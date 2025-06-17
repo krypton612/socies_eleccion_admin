@@ -17,7 +17,7 @@ class Usuario extends Authenticatable implements FilamentUser, HasName
 
     protected $table = 'usuario';
     protected $primaryKey = 'id';
-    public $timestamps = false; // Desactiva timestamps automáticos ya que se manejan manualmente
+    public $timestamps = true; // Desactiva timestamps automáticos ya que se manejan manualmente
 
     protected $fillable = [
         'nombre',
@@ -45,6 +45,11 @@ class Usuario extends Authenticatable implements FilamentUser, HasName
         'fecha_nacimiento' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'contrasena_hash' => 'hashed',
+    ];
+
+    protected $attributes = [
+        'estado' => true,
     ];
 
     /**
