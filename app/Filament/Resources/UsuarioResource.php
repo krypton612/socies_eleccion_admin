@@ -31,7 +31,31 @@ class UsuarioResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nombre_completo')
+                ->badge()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('correo')
+                ->searchable(),
+                Tables\Columns\IconColumn::make('is_deleted')
+                ->label('Eliminado')
+                ->alignCenter()
+                ->boolean()
+                ->searchable(),
+                Tables\Columns\IconColumn::make('estado')
+                ->label('¿Puede votar?')
+                ->alignCenter()
+                ->boolean()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('fecha_nacimiento')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('rol.tipo_rol')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                ->toggleable(isToggledHiddenByDefault: true)
+                ->searchable(),
+                Tables\Columns\TextColumn::make('updated_at')
+                ->toggleable(isToggledHiddenByDefault: true)
+                ->searchable(),
             ])
             ->filters([
                 //
