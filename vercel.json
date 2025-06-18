@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "functions": {
+      "api/index.php": { "runtime": "vercel-php@0.6.1" }
+    },
+    "routes": [
+      {
+        "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|txt|woff|woff2|ttf|eot))",
+        "dest": "/public/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/api/index.php",
+        "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+      }
+    ]
+  }
+  
