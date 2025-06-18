@@ -69,10 +69,9 @@ class UsuarioResource extends Resource
                 Tables\Columns\TextColumn::make('cedula_identidad')
                     ->copyable()
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_deleted')
+                Tables\Columns\ToggleColumn::make('is_deleted')
                     ->label('Eliminado')
                     ->alignCenter()
-                    ->boolean()
                     ->searchable(),
                 Tables\Columns\IconColumn::make('estado')
                     ->label('¿Puede votar?')
