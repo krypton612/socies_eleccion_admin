@@ -8,5 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return Redirect::to('/control/login2');
+    return Redirect::to('/control/login');
 })->name('login');
