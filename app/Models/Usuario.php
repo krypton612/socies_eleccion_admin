@@ -97,8 +97,9 @@ class Usuario extends Authenticatable implements FilamentUser, HasName
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->estado && !$this->is_deleted;
+        return $this->estado && !$this->is_deleted && $this->rol?->tipo_rol === 'Administrador'; // <-- solo rol administrador puede entrar
     }
+
 
     /**
      * Obtener contraseña para autenticación
