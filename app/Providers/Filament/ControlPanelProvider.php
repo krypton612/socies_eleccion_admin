@@ -32,8 +32,12 @@ class ControlPanelProvider extends PanelProvider
                 CustomLogin::class
             )
             ->colors([
-                'primary' => Color::Amber,
-
+                'primary' => Color::Blue,         // confianza, seriedad
+                'secondary' => Color::Slate,      // neutro, profesional
+                'danger' => Color::Red,           // errores, alertas
+                'success' => Color::Green,        // operaciones exitosas
+                'warning' => Color::Amber,        // advertencias
+                'info' => Color::Cyan,            // información
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
