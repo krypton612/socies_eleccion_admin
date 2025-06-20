@@ -33,6 +33,7 @@ class ControlPanelProvider extends PanelProvider
             )
             ->colors([
                 'primary' => Color::Amber,
+
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -57,18 +58,25 @@ class ControlPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
-                     ->label('Procesos')
+                     ->label('Candidatos')
                      ->icon('heroicon-o-heart'),
                 NavigationGroup::make()
-                    ->label('Usuarios')
+                    ->label('Candidaturas')
                     ->icon('heroicon-o-user-group'),
                 NavigationGroup::make()
-                    ->label('Reportes')
+                    ->label('Municipios')
                     ->icon('heroicon-o-arrow-down-on-square-stack'),
+                NavigationGroup::make()
+                    ->label('Elecciones')
+                    ->icon('heroicon-o-flag'),
+                NavigationGroup::make()
+                    ->label('Votos')
+                    ->icon('heroicon-o-presentation-chart-line'),
                 NavigationGroup::make()
                     ->label('Configuración')
                     ->icon('heroicon-o-cog-6-tooth'),
             ])
+            ->brandName('Elecciones Intra')
             ->authMiddleware([
                 Authenticate::class,
             ]);

@@ -56,7 +56,7 @@ class Candidato extends Model
      */
     public function candidaturas(): HasMany
     {
-        return $this->hasMany(Candidatura::class, 'candidato_id');
+        return $this->hasMany(Candidatura::class);
     }
 
     /**

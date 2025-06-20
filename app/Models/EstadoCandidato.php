@@ -9,7 +9,7 @@ class EstadoCandidato extends Model
 {
     protected $table = 'estado_candidato';
     protected $primaryKey = 'id';
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'estado_candidato',

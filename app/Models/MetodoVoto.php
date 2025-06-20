@@ -12,7 +12,7 @@ class MetodoVoto extends Model
 
     protected $table = 'metodo_voto';
     protected $primaryKey = 'id';
-    public $timestamps = false; // Desactiva timestamps automáticos ya que se manejan manualmente
+    public $timestamps = true; // Desactiva timestamps automáticos ya que se manejan manualmente
 
     protected $fillable = [
         'nombre',

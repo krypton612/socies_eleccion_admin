@@ -20,7 +20,7 @@ class UsuarioResource extends Resource
 
     protected static ?string $pluralNavigationLabel = 'Usuarios';
 
-    protected static ?string $navigationGroup = 'Control';
+    protected static ?string $navigationGroup = 'Configuración';
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
