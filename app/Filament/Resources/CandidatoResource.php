@@ -171,4 +171,11 @@ class CandidatoResource extends Resource
             'edit' => Pages\EditCandidato::route('/{record}/edit'),
         ];
     }
+
+    public static function getWidgets(): array
+    {
+        return [
+            CandidatoResource\Widgets\CandidatosOverview::class,
+        ];
+    }
 }

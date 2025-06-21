@@ -16,6 +16,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Filament\Tables\Filters\SelectFilter;
 
 class MunicipioResource extends Resource
 {
@@ -91,7 +92,10 @@ class MunicipioResource extends Resource
                     ->weight('bold'),
             ])
             ->filters([
-                //
+                SelectFilter::make('provincia_id')
+                    ->label('Provincia')
+                    ->relationship('provincia', 'nombre')
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

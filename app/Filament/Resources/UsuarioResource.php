@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UsuarioResource\Pages;
-use App\Filament\Resources\UsuarioResource\RelationManagers;
 use App\Models\Usuario;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -115,6 +114,13 @@ class UsuarioResource extends Resource
             'index' => Pages\ListUsuarios::route('/'),
             'create' => Pages\CreateUsuario::route('/create'),
             'edit' => Pages\EditUsuario::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            UsuarioResource\Widgets\UsuariosOverview::class,
         ];
     }
 }

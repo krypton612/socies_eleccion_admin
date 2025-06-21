@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CandidaturaResource\Pages;
 use App\Filament\Resources\CandidaturaResource\RelationManagers;
+use App\Filament\Resources\CandidaturaResource\Widgets\CandidaturaOverview;
 use App\Models\Candidato;
 use App\Models\Candidatura;
 use Filament\Forms;
@@ -174,6 +175,13 @@ class CandidaturaResource extends Resource
             'index' => Pages\ListCandidaturas::route('/'),
             'create' => Pages\CreateCandidatura::route('/create'),
             'edit' => Pages\EditCandidatura::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            CandidaturaOverview::class,
         ];
     }
 }

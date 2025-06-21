@@ -50,6 +50,11 @@ class UbicacionVoto extends Model
         return $this->hasMany(Voto::class, 'ubicacion_voto_id');
     }
 
+    public function getTotalVotosAttribute(): int
+    {
+        return $this->votos()->count() ?? 0;
+    }
+
     /**
      * Scope para ubicaciones activas
      */

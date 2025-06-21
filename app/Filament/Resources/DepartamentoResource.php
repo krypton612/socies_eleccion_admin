@@ -82,4 +82,11 @@ class DepartamentoResource extends Resource
             'edit' => Pages\EditDepartamento::route('/{record}/edit'),
         ];
     }
+
+    public static function getWidgets(): array
+    {
+        return [
+            DepartamentoResource\Widgets\DepartamentoOverview::class,
+        ];
+    }
 }

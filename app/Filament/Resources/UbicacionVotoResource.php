@@ -144,6 +144,11 @@ class UbicacionVotoResource extends Resource
                     ->limit(50)
                     ->tooltip(fn ($record) => $record->direccion),
 
+                Tables\Columns\TextColumn::make('total_votos')
+                    ->label('Total de Votos')
+                    ->alignCenter()
+                    ->icon('heroicon-o-user-group'),
+
                 Tables\Columns\TextColumn::make('coordenadas')
                     ->label('Lat, Lng')
                     ->icon('heroicon-o-globe-alt')
@@ -194,6 +199,13 @@ class UbicacionVotoResource extends Resource
             'index' => Pages\ListUbicacionVotos::route('/'),
             'create' => Pages\CreateUbicacionVoto::route('/create'),
             'edit' => Pages\EditUbicacionVoto::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            UbicacionVotoResource\Widgets\UbicacionVotoOverview::class,
         ];
     }
 }

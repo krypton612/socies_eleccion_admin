@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\VotoResource\Pages;
 use App\Filament\Resources\VotoResource\RelationManagers;
+use App\Filament\Resources\VotoResource\Widgets\VotoOverview;
 use App\Models\Voto;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -66,7 +67,14 @@ class VotoResource extends Resource
     }
 
     public static function canCreate(): bool
-   {
-      return false;
-   }
+    {
+        return false;
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            VotoOverview::class,
+        ];
+    }
 }

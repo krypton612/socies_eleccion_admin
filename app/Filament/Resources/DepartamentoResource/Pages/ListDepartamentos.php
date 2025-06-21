@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\DepartamentoResource\Pages;
 
 use App\Filament\Resources\DepartamentoResource;
+use App\Filament\Resources\DepartamentoResource\Widgets\DepartamentoOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,12 @@ class ListDepartamentos extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array {
+        return [
+            DepartamentoOverview::class,
         ];
     }
 }

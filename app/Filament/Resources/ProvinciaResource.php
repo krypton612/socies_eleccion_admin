@@ -64,7 +64,10 @@ class ProvinciaResource extends Resource
                     ->weight('bold'),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('departamento_id')
+                    ->label('Departamento')
+                    ->relationship('departamento', 'nombre')
+                    ->searchable()
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

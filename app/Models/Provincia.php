@@ -31,7 +31,7 @@ class Provincia extends Model
      */
     public function departamento(): BelongsTo
     {
-        return $this->belongsTo(Departamento::class, 'departamento_id');
+        return $this->belongsTo(Departamento::class);
     }
 
     /**
