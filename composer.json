@@ -9,6 +9,8 @@
         "php": "^8.2",
         "dotswan/filament-map-picker": "^1.8",
         "filament/filament": "^3.3",
+        "hasnayeen/themes": "^3.0",
+        "lara-zeus/akin": "^1.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1"
     },

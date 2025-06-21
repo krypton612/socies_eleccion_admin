@@ -60,6 +60,9 @@ class ControlPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->plugin(
+                
+            )
             ->navigationGroups([
                 NavigationGroup::make()
                      ->label('Candidatos')
