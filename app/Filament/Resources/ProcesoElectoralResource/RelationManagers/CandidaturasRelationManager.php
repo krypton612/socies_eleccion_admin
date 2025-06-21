@@ -1,34 +1,23 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\ProcesoElectoralResource\RelationManagers;
 
-use App\Filament\Resources\CandidaturaResource\Pages;
-use App\Filament\Resources\CandidaturaResource\RelationManagers;
-use App\Filament\Resources\CandidaturaResource\Widgets\CandidaturaOverview;
 use App\Models\Candidato;
-use App\Models\Candidatura;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\DB;
 
-class CandidaturaResource extends Resource
+class CandidaturasRelationManager extends RelationManager
 {
-    protected static ?string $model = Candidatura::class;
+    protected static string $relationship = 'candidaturas';
 
-    protected static ?string $navigationLabel = 'Candidaturas';
-
-    protected static ?string $pluralNavigationLabel = 'Candidaturas';
-
-    protected static ?string $navigationGroup = 'Candidaturas';
-
-    protected static ?string $recordTitleAttribute = 'name';
-
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -84,21 +73,14 @@ class CandidaturaResource extends Resource
                             ->required()
                             ->prefixIcon('heroicon-o-check-circle'),
     
-                        Forms\Components\Select::make('proceso_electoral_id')
-                            ->label('Proceso Electoral')
-                            ->relationship('procesoElectoral', 'nombre_proceso')
-                            ->preload()
-                            ->searchable()
-                            ->required()
-                            ->prefixIcon('heroicon-o-megaphone'),
                     ]),
             ]);
     }
-    
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('nombre_candidatura')
             ->columns([
                 Tables\Columns\TextColumn::make('nombre_candidatura')
                     ->label('Nombre')
@@ -112,6 +94,13 @@ class CandidaturaResource extends Resource
                     ->icon('heroicon-o-chat-bubble-left')
                     ->limit(50)
                     ->tooltip(fn ($record) => $record->lema),
+                Tables\Columns\TextColumn::make('total_votos')
+                    ->label('Total de Votos')
+                    ->alignCenter()
+                    ->color(fn($state) => $state > 0 ? 'success' : 'danger')
+                    ->badge()
+                    ->icon('heroicon-o-chart-bar')
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('candidato.nombre_completo')
                     ->label('Candidato')
@@ -152,36 +141,17 @@ class CandidaturaResource extends Resource
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListCandidaturas::route('/'),
-            'create' => Pages\CreateCandidatura::route('/create'),
-            'edit' => Pages\EditCandidatura::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getWidgets(): array
-    {
-        return [
-            CandidaturaOverview::class,
-        ];
     }
 }

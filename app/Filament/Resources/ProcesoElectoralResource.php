@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\CandidatoResource\RelationManagers\CandidaturasRelationManager;
 use App\Filament\Resources\ProcesoElectoralResource\Pages;
 use App\Filament\Resources\ProcesoElectoralResource\RelationManagers;
+use App\Filament\Resources\ProcesoElectoralResource\RelationManagers\CandidaturasRelationManager as RelationManagersCandidaturasRelationManager;
 use App\Models\ProcesoElectoral;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -153,7 +155,7 @@ class ProcesoElectoralResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagersCandidaturasRelationManager::class,
         ];
     }
 
