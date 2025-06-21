@@ -22,7 +22,7 @@ class VotoResource extends Resource
 
     protected static ?string $pluralNavigationLabel = 'Votos Finalizados';
 
-    protected static ?string $navigationGroup = 'Votos';
+    protected static ?string $navigationGroup = 'Municipios';
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
