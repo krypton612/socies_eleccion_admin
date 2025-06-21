@@ -23,7 +23,7 @@ class UbicacionVotoResource extends Resource
     protected static ?string $pluralNavigationLabel = 'Ubicaciones de Voto';
 
     protected static ?string $navigationGroup = 'Municipios';
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'nombre_ubicacion';
 
     public static function form(Form $form): Form
     {

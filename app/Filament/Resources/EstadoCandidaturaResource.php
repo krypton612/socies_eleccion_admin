@@ -23,7 +23,7 @@ class EstadoCandidaturaResource extends Resource
 
     protected static ?string $navigationGroup = 'Candidaturas';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'estado_candidatura';
 
     public static function form(Form $form): Form
     {

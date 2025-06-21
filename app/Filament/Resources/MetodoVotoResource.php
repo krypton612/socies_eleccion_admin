@@ -18,8 +18,8 @@ class MetodoVotoResource extends Resource
 
     protected static ?string $pluralNavigationLabel = 'Métodos de Voto';
 
-    protected static ?string $navigationGroup = 'Votos';
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $navigationGroup = 'Municipios';
+    protected static ?string $recordTitleAttribute = 'nombre';
 
     public static function form(Form $form): Form
     {

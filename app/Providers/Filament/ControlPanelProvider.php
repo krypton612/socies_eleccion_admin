@@ -31,6 +31,10 @@ class ControlPanelProvider extends PanelProvider
             ->login(
                 CustomLogin::class
             )
+            ->topNavigation()
+            ->spa()
+            ->font('Edu NSW ACT Hand Precursive')
+            ->unsavedChangesAlerts()
             ->colors([
                 'primary' => Color::Blue,         // confianza, seriedad
                 'secondary' => Color::Slate,      // neutro, profesional
@@ -49,6 +53,7 @@ class ControlPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -59,6 +64,7 @@ class ControlPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+
             ])
             ->navigationGroups([
                 NavigationGroup::make()
@@ -74,13 +80,10 @@ class ControlPanelProvider extends PanelProvider
                     ->label('Elecciones')
                     ->icon('heroicon-o-flag'),
                 NavigationGroup::make()
-                    ->label('Votos')
-                    ->icon('heroicon-o-presentation-chart-line'),
-                NavigationGroup::make()
                     ->label('Configuración')
                     ->icon('heroicon-o-cog-6-tooth'),
             ])
-            ->brandName('Elecciones Intra')
+            ->brandName('Elecciones Intranet')
             ->authMiddleware([
                 Authenticate::class,
             ]);

@@ -23,7 +23,7 @@ class CargoResource extends Resource
 
     protected static ?string $navigationGroup = 'Candidatos';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'nombre';
 
     public static function form(Form $form): Form
     {

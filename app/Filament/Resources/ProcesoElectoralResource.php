@@ -25,7 +25,7 @@ class ProcesoElectoralResource extends Resource
 
     protected static ?string $navigationGroup = 'Elecciones';
 
-    protected static ?string $recordTitleAttribute = 'estado_proceso';
+    protected static ?string $recordTitleAttribute = 'nombre_proceso';
 
     public static function form(Form $form): Form
     {
@@ -166,5 +166,9 @@ class ProcesoElectoralResource extends Resource
             'create' => Pages\CreateProcesoElectoral::route('/create'),
             'edit' => Pages\EditProcesoElectoral::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }
