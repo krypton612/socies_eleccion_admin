@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -73,5 +74,10 @@ class Candidato extends Model
     public function getEdadAttribute(): int
     {
         return $this->fecha_nacimiento->age;
+    }
+
+    public function scopeSearchNombreCompleto2(Builder $query, string $search): Builder
+    {
+        return $query->whereRaw("concat(nombre_candidato, ' ', apellido_paterno, ' ', apellido_materno) ILIKE ?", ["%{$search}%"]);
     }
 }

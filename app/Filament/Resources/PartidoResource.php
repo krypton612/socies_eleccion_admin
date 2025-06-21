@@ -23,7 +23,7 @@ class PartidoResource extends Resource
 
     protected static ?string $navigationGroup = 'Candidaturas';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'nombre_partido';
 
     public static function form(Form $form): Form
     {
@@ -240,5 +240,9 @@ class PartidoResource extends Resource
             'create' => Pages\CreatePartido::route('/create'),
             'edit' => Pages\EditPartido::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

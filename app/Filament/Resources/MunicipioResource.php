@@ -28,7 +28,7 @@ class MunicipioResource extends Resource
     protected static ?string $pluralNavigationLabel = 'Municipios';
 
     protected static ?string $navigationGroup = 'Municipios';
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'nombre';
 
 
     public static function form(Form $form): Form
@@ -122,5 +122,9 @@ class MunicipioResource extends Resource
             'create' => Pages\CreateMunicipio::route('/create'),
             'edit' => Pages\EditMunicipio::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

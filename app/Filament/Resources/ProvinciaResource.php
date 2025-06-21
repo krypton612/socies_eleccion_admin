@@ -23,7 +23,7 @@ class ProvinciaResource extends Resource
     protected static ?string $pluralNavigationLabel = 'Provincias';
 
     protected static ?string $navigationGroup = 'Municipios';
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'nombre';
 
     public static function form(Form $form): Form
     {

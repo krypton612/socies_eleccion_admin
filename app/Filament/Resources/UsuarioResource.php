@@ -20,7 +20,7 @@ class UsuarioResource extends Resource
     protected static ?string $pluralNavigationLabel = 'Usuarios';
 
     protected static ?string $navigationGroup = 'Candidaturas';
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'correo';
 
     public static function form(Form $form): Form
     {
@@ -122,5 +122,9 @@ class UsuarioResource extends Resource
         return [
             UsuarioResource\Widgets\UsuariosOverview::class,
         ];
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

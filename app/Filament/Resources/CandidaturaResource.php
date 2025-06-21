@@ -26,7 +26,7 @@ class CandidaturaResource extends Resource
 
     protected static ?string $navigationGroup = 'Candidaturas';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'nombre_candidatura';
 
     public static function form(Form $form): Form
     {
@@ -183,5 +183,9 @@ class CandidaturaResource extends Resource
         return [
             CandidaturaOverview::class,
         ];
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }
