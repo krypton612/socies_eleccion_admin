@@ -1,4 +1,4 @@
-# ⚠️Nombre del Proyecto (Sistema de Administración de Elecciones)
+# ⚠️Blockchain + Laravel + React (Sistema de Administración de Elecciones)
 
 ![Laravel](https://img.shields.io/badge/Laravel-10.x-red)
 ![FilamentPHP](https://img.shields.io/badge/Filament-3.x-blue)
