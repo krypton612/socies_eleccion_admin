@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CandidatoResource\Pages;
 use App\Filament\Resources\CandidatoResource\RelationManagers;
+use App\Filament\Resources\CandidatoResource\RelationManagers\CandidaturasRelationManager;
 use App\Models\Candidato;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -159,7 +160,7 @@ class CandidatoResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CandidaturasRelationManager::class,
         ];
     }
 

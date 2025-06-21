@@ -87,4 +87,9 @@ class Candidatura extends Model
             $q->where('estado_candidatura', 'Activo');
         });
     }
+
+    public function getTotalVotosAttribute(): int
+    {
+        return $this->votos()->count();
+    }
 }
