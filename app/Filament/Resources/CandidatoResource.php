@@ -84,9 +84,10 @@ class CandidatoResource extends Resource
                         Forms\Components\FileUpload::make('foto_url')
                             ->disk('backblaze_bucket')
                             ->directory('candidatos')
-                            ->previewable(false) // ← Desactivar preview del FileUpload
                             ->visibility('private') // <--- importante
                             ->image()
+                            ->previewable(true)
+                            ->imageEditor()
                             ->preserveFilenames(false),
                         
                         Forms\Components\Textarea::make('propuesta')
