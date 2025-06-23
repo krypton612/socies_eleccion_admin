@@ -84,10 +84,10 @@ class CandidatoResource extends Resource
                         Forms\Components\FileUpload::make('foto_url')
                             ->disk('backblaze_bucket')
                             ->directory('candidatos')
+                            ->previewable(false) // ← Desactivar preview del FileUpload
                             ->visibility('private') // <--- importante
                             ->image()
-                            ->preserveFilenames()
-                            ->previewable(true),    
+                            ->preserveFilenames(false),
                         
                         Forms\Components\Textarea::make('propuesta')
                             ->label('Propuesta')
@@ -102,6 +102,8 @@ class CandidatoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('foto_url')
+                    ->disk('backblaze_bucket')
+                    ->visibility('private')
                     ->label('Foto')
                     ->circular(),
                 Tables\Columns\TextColumn::make('nombre_completo')
