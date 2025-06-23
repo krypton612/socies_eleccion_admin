@@ -84,9 +84,11 @@ class CandidatoResource extends Resource
                         Forms\Components\FileUpload::make('foto_url')
                             ->disk('backblaze_bucket')
                             ->directory('candidatos')
-                            ->label('Foto')
-                            ->required()
-                            ->image(),
+                            ->visibility('private') // <--- importante
+                            ->image()
+                            ->preserveFilenames()
+                            ->previewable(true),    
+                        
                         Forms\Components\Textarea::make('propuesta')
                             ->label('Propuesta')
                             ->required()
