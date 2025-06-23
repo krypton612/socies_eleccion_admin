@@ -82,6 +82,8 @@ class CandidatoResource extends Resource
                             ->prefixIcon('heroicon-o-user')
                             ->default(now()),
                         Forms\Components\FileUpload::make('foto_url')
+                            ->disk('backblaze_bucket')
+                            ->directory('candidatos')
                             ->label('Foto')
                             ->required()
                             ->image(),
